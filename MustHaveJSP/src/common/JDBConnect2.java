@@ -18,7 +18,7 @@ public class JDBConnect2 {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			String url = "jdbc:mysql://localhost:3306/gesipan";	//db 접속 주소
+			String url = "jdbc:mysql://localhost:3306/cyworld";	//db 접속 주소
 			String id = "manager";	//사용자 계정 아이디
 			String pwd="1234";	//사용자 계정 비밀번호
 			con = DriverManager.getConnection(url, id, pwd);

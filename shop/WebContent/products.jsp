@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="dto.Product" %>
 <%@ page import="dao.ProductRepository" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -28,23 +29,18 @@
 	%>
 	<div class="container">
 		<div class="row" align="center">
-			<%
-				for (int i=0; i<listOfProducts.size(); i++) {
-					Product product = listOfProducts.get(i);
-			%>
+			<c:set value="<%=listOfProducts %>" var="lists" />
+			<c:forEach items="${lists }" var="list">
 				<div class="col-md-4">
-					<img src="resources/images/<%=product.getProductId()%>.png">
-					<h3><%=product.getPname()%></h3>
-					<h3><%=product.getDescription()%></h3>
-					<h3><%=product.getUnitPrice()%></h3>
-					<p> 
-					<a href="product.jsp?id=<%=product.getProductId()%>"
-					class="btn btn-secondary" role="button">상세 정보</a>
-					</p>
+				<img src="resources/images/${list.productImage }" style="width:300px;height:200px">
+				<h3>${list.pname }</h3>
+				<h3>${list.description } </h3>
+				<h3>${list.unitPrice }</h3>
+				<p>
+				<a href="product.jsp?id=${list.productId }" class="btn btn-secondary" role="button">상세 정보</a>
+				</p>
 				</div>
-			<%	
-				}
-			%>
+			</c:forEach>
 		</div>
 	</div>
 	

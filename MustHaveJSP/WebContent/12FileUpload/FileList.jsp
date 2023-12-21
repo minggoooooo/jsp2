@@ -22,19 +22,21 @@
 	<table border="1">
 		<tr>
 			<th>No</th> <th> 작성자</th> <th>제목</th> <th> 카테고리</th>
-			<th>원본 파일명</th> <th> 저장된 파일명</th> <th>작성일</th> 
+			<th>원본 파일명</th> <th> 저장된 파일명</th> <th>작성일</th> <th>다운로드</th>
 		</tr>
-	<c:forEach var="list" items="<%=fileLists %>">
+	<% for(MyfileDTO f : fileLists){%>
+	
 		<tr>
-			<td>${list.idx}</td>
-			<td>${list.name}</td>
-			<td>${list.title}</td>
-			<td>${list.cate}</td>
-			<td>${list.ofile}</td>
-			<td>${list.sfile}</td>
-			<td>${list.postdate}</td>
+			<td><%=f.getIdx() %></td>
+			<td><%=f.getName() %></td>
+			<td><%=f.getTitle() %></td>
+			<td><%=f.getCate() %></td>
+			<td><%=f.getOfile() %></td>
+			<td><%=f.getSfile() %></td>
+			<td><%=f.getPostdate() %></td>
+			<td> <a href="Download.jsp?oName=<%=URLEncoder.encode(f.getOfile(),"utf-8")%>&sName=<%=URLEncoder.encode(f.getSfile(),"utf-8")%>">[다운로드]</a> </td>
 		</tr>
-	</c:forEach>	
+	<%} %>
 	</table>
 </body>
 </html>
